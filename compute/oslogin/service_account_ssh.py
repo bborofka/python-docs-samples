@@ -26,6 +26,7 @@ import logging
 import subprocess
 import time
 import uuid
+import os
 
 import googleapiclient.discovery
 import requests
@@ -142,30 +143,32 @@ def main(cmd, project, instance=None, zone=None,
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        '--cmd', default='uname -a',
-        help='The command to run on the remote instance.')
-    parser.add_argument(
-        '--project',
-        help='Your Google Cloud project ID.')
-    parser.add_argument(
-        '--zone',
-        help='The zone where the target instance is locted.')
-    parser.add_argument(
-        '--instance',
-        help='The target instance for the ssh command.')
-    parser.add_argument(
-        '--account',
-        help='The service account email.')
-    parser.add_argument(
-        '--hostname',
-        help='The external IP address or hostname for the target instance.')
-    args = parser.parse_args()
+#     parser = argparse.ArgumentParser(
+#         description=__doc__,
+#         formatter_class=argparse.RawDescriptionHelpFormatter)
+#     parser.add_argument(
+#         '--cmd', default='uname -a',
+#         help='The command to run on the remote instance.')
+#     parser.add_argument(
+#         '--project',
+#         help='Your Google Cloud project ID.')
+#     parser.add_argument(
+#         '--zone',
+#         help='The zone where the target instance is locted.')
+#     parser.add_argument(
+#         '--instance',
+#         help='The target instance for the ssh command.')
+#     parser.add_argument(
+#         '--account',
+#         help='The service account email.')
+#     parser.add_argument(
+#         '--hostname',
+#         help='The external IP address or hostname for the target instance.')
+#     args = parser.parse_args()
 
-    main(args.cmd, args.project, instance=args.instance, zone=args.zone,
-         account=args.account, hostname=args.hostname)
+#     main(args.cmd, args.project, instance=args.instance, zone=args.zone,
+#          account=args.account, hostname=args.hostname)
+    
+    main('cowsay "Moooo"', GCP_PROJECT, 'target', 'us-central1-a')
 
 # [END main]
